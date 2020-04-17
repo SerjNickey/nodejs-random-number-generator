@@ -2,7 +2,6 @@ const express = require("express");
  
 const app = express();
 
-
 app.get("/", (req, res) => {    
   res.send("Main Page"); 
   console.log("Main Page");    
@@ -10,6 +9,10 @@ app.get("/", (req, res) => {
 
 app.get("/api/number", (req, res) => {   
   res.type("text/plain");
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+  
   let randomNumber = Math.floor(Math.random() * 10) + 1;
   res.json({number: randomNumber});
 });
